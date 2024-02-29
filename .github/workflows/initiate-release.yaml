@@ -22,4 +22,5 @@ jobs:
         run: |
           cd ../
           git clone https://${{ github.actor }}:${{ github.event.inputs.component_choice }}@github.com/chandratop/release-note-generator.git
+          git clone https://${{ github.actor }}:${{ github.event.inputs.component_choice }}@github.com/chandratop/monorepo-release-notes-demo.git
           ls -la
