@@ -21,8 +21,9 @@ jobs:
         id: releaser
         run: |
           cd ../
-          git clone https://github.com/chandratop/release-note-generator.git
-          git clone https://github.com/chandratop/monorepo-release-notes-demo.git
+          git clone https://chandratop:${GITHUB_TOKEN}@github.com/chandratop/release-note-generator.git
+          git clone https://chandratop:${GITHUB_TOKEN}@github.com/chandratop/monorepo-release-notes-demo.git
           ls -la
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
