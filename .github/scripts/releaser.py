@@ -159,6 +159,13 @@ if __name__ == "__main__":
     else:
 
         release_tag: str = get_title_release(args.action)
+        branch: str = "release-" + release_tag
+
+        # Checkout to branch
+        cmd = f'git checkout {branch}'
+        result = run(cmd)
+        if not result.fine:
+            raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
 
         # Create the release
         cmd = f'gh release create {release_tag} --notes-file RELEASE.md --title "{release_tag}"'
