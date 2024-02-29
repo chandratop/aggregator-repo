@@ -5,9 +5,9 @@ release_note_generator:
 
 monorepo_release_notes_demo:
   repo: monorepo-release-notes-demo
-  release: 0.1.0
+  release: 0.0.1
   charts:
-    argocd: 2.0.0
+    argocd: 1.0.0
     kubecost: 3.0.0
     teleport: 4.0.0
     thanos: 5.0.0
