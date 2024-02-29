@@ -151,7 +151,7 @@ if __name__ == "__main__":
             raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
 
         # Create a pull request
-        cmd = f'gh pr create --base main --head {branch} --title "{branch}" --label release --body-file RELEASE.md'
+        cmd = f'gh pr create --base main --head {branch} --title "{branch}" --label release --body {release}'
         result = run(cmd)
         if not result.fine:
             raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
@@ -161,7 +161,7 @@ if __name__ == "__main__":
         release_tag: str = get_title_release(args.action)
 
         # Create the release
-        cmd = f'gh release create {release_tag} --title "{release_tag}"'
+        cmd = f'gh release create {release_tag} --notes-file RELEASE.md --title "{release_tag}"'
         result = run(cmd)
         if not result.fine:
             raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
