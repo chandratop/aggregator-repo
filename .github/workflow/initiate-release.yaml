@@ -1,0 +1,25 @@
+name: Initiate GitHub Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      pat:
+        description: 'PAT'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run releaser.py to initiate release
+        id: releaser
+        run: |
+          cd ../
+          git clone https://${{ github.actor }}:${{ github.event.inputs.component_choice }}@github.com/chandratop/release-note-generator.git
+          ls -la
