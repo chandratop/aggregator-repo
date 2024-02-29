@@ -144,14 +144,8 @@ if __name__ == "__main__":
         if not result.fine:
             raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
 
-        # Checkout to main branch
-        cmd = f'git checkout main'
-        result = run(cmd)
-        if not result.fine:
-            raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
-
         # Create a pull request
-        cmd = f'gh pr create --base main --head {branch} --title "{branch}" --label release --body {release}'
+        cmd = f'gh pr create --base main --head {branch} --title "{branch}" --label release --body-file RELEASE.md'
         result = run(cmd)
         if not result.fine:
             raise ValueError(f"Command failed: {cmd}\nError: {result.what}")
