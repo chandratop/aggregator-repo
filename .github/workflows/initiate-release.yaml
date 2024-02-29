@@ -17,10 +17,14 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run releaser.py to initiate release
-        id: releaser
+      - name: Clone the sub-repositories
         run: |
           cd ../
           git clone https://${{ github.actor }}:${{ github.event.inputs.pat }}@github.com/chandratop/release-note-generator.git
           git clone https://${{ github.actor }}:${{ github.event.inputs.pat }}@github.com/chandratop/monorepo-release-notes-demo.git
           ls -la
+
+      - name: Make the updates
+        run: "python3 .github/scripts/releaser.py ${{ github.event.pull_request.number }}"
+        env:
+          GH_TOKEN: ${{ github.token }}
