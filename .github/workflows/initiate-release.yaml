@@ -25,6 +25,6 @@ jobs:
           ls -la
 
       - name: Make the updates
-        run: "python3 .github/scripts/releaser.py ${{ github.event.pull_request.number }}"
+        run: "python3 .github/scripts/releaser.py update"
         env:
           GH_TOKEN: ${{ github.token }}
